@@ -1,0 +1,24 @@
+ok commands
+=============
+
+Test
+-----
+To test a specific question, use the -q option with the name of the question:
+* python3 ok -q ### Q1
+
+You can run all the tests with the following command:
+* python3 ok
+
+By default, only tests that fail will appear. If you want to see how you did on all tests, you can use the -v option:
+* python3 ok -v
+
+Test locally
+* python3 ok --local
+
+
+To start the interactive interpreter automatically upon failing an ok test:
+* python3 ok -q 01 -i
+
+You can also use the debugging print feature in OK by writing
+* print("DEBUG:", x) 
+which will produce an output in your terminal without causing OK tests to fail with extra output.

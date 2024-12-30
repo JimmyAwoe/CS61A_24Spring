@@ -1,0 +1,16 @@
+VS Code commands
+=============
+
+Ctrl-` : open an integrated terminal in VS Code
+Ctrl-s : saves the current file
+Ctrl-x : cuts the entire line your cursor is on
+Ctrl-v : pastes the entire line you cut in the line above your cursor OR pastes the selected text in place
+Ctrl-z : undo
+Ctrl-shift-z : redo
+tab : indent a line or a group of lines
+shift-tab : dedent a line or a group of lines
+Ctrl-d : highlights the current word. For every Ctrl-d you type after this first word, it will highlight every next instance of the word. This allows you to easily rename variables with multiple cursors! (Play around with this one, it's fun and very practical!)
+Ctrl-tab : moves you to the next tab (Ctrl on Mac as well)
+Ctrl-shift-tab : moves you to the previous tab (Ctrl on Mac as well)
+Ctrl-f : search for a word
+Ctrl-shift-f : searches through all tabs

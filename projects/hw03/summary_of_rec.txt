@@ -1,0 +1,62 @@
+# This is a document summarizing my consideration of recursion.
+=============================================================
+1. How to understand recursion and when to use it
+The essence of recursion is piecewise function.
+
+So, when someone want to express a piecewise function in his 
+code, he should consider if an implentation of recursion
+would make code more grace.
+
+==============================================================
+2. How to buile the body of a recursion function
+As cs61a said, the two part of recursion function is base condition
+and recursion call. So, follow the below two step,
+
+1. try to find the base condition, note that base condition often is
+the trivial condition.
+2. find a operation that can force the operand to the base condition, 
+and then process the splited part in one such opeartion and call recur-
+sion for the rest part.
+
+
+============================================================
+3. How to understand Y-combinator in the last question?
+First, in the second line of return:
+	 (lambda f: lambda x: 1 if x == 0 else mul(x, f(sub(x, 1))))
+this is a function, which receive two parameter, if I give it a name fact,
+we can call it by fact(f)(x)
+
+Second, in the first line of return, we first set one function to receive
+a function, i.e., lambda z..., then we write this,
+
+	(lambda x: z(lambda *args: (x(x))(*args)))(lambda x: z(lambda *args: (x(x))(*args)))
+
+actually, the first lambda x... would call the second lambda x..., and if you binding the
+second lambda x... to the x in the first lambda x..., you would receive:
+
+	 z(lambda *args: (lambda x...)(lambda x...)(*args))
+
+recall we have bound fact to z, then
+
+	fact(lambda *args: (lambda x...)(lambda x...)(*args))
+
+Recall we have said fact need another (x), and when x == 1, we just return
+1 without considering any other thing. But if x != 1, then we need to carry out:
+
+	x * ((lambda x...)(lambda x...))(x - 1)
+
+remeber (lambda x...)(lambda x...) equal what? it equals
+
+	z(lambda *args: (lambda x...)(lambda x...)(*args))
+
+so we get
+
+	x * z(lambda *args: (lambda x...)(lambda x...)(*args))(x - 1)
+
+Then we just use lambda function achieve recursion. This process using the Y com-
+binator, but I think it's not necessary to discuss it too much here. You can find detailed
+information by google.
+
+
+	
+
