@@ -1,0 +1,117 @@
+View what I learned from cs61a
+===============================
+
+Scheme
+------
+
+Scheme Grammar
+
+* use (operator operand) to achieve operation
+* useful operator: 
+    'and',
+    'begin',
+    'cond',
+    'define',
+    'if',
+    'lambda',
+    'let',
+    'or',
+    'quote',
+    'quasiquote',
+    'unquote',
+    'mu',
+    'define-macro',
+* define-marco: It receive one expressions and return one expressions 
+replacing formal variable with parameters and evaulate it once, then 
+evaulate the result expressions.
+* quote: 'is a shorthand of quote. quote use to force interpreter do 
+not evaulate an expressions.
+* quasiquote: `is a shorthand of quote. quasiquote is similar to quote
+but agree unquote(,) to unquote expressions.
+
+Writing Interpreter
+
+* To write a interpreter for a language, we can use a read-evaulate-print
+-loop(REPL) paradigm.
+* We should create lexical analyzer and syntactic analyzer, both of them
+ basd on a series design.
+* Lexical analyzer is responsible for tokenize input and transform it to 
+data structure implemented by interpreter language. 
+    * In scheme, we can create a scheme_read function. It can understand 
+    multi-line input or things such like decimal point and convert that
+    into form can be understand by python.
+* Syntactic analyzer try to analyzer the grammar and achieve corresponding
+operation using interpreter language. It sequentiall exercutes evaulating 
+operand, applying operator to previous result. 
+    * In scheme, this is achieved by two mutual recursive functions 
+    scheme_evel/scheme_apply. For scheme_evel, self_evaluate function will
+    output itself, while other expressions will be understand as a combition.
+    scheme_evel will decompose the combition as operator and operand, then
+    send them to scheme_apply in which scheme_apply will call procedures
+    corresponding to operator to handle operand. When operand remain
+    unevaulated, it will call scheme_evel to evaulate them.
+    * For build-in function, scheme_apply will call a do_**_form function to 
+    carry out corresponding operation.
+* Print part aim to create a interactive environment for coder. It uses error
+arise mechanism, try-except loop.
+* To achieve above operation, we need to define the frame to identify environment.
+* We need to find a suitable class to load Lexical analyzer.
+    * In scheme, this class is the same as python, i.e., Frame. Frame has a 
+    dictionary to record all variables in current environment and his parent
+    Frame. Frame with no parent Frame is global Frame. Frame has method called
+    define and lookup to define and evaulate variable.
+    * There are two paradigm to identify which Frame shoule be choosen. Lexical
+    scope, the parent Frame is the environment in which the procedures was defined.
+    Dynamic scope, the parent Frame is the environment in which a procedure was
+    called.
+
+Scheme Advantage
+
+* Scheme can easily create expressions that can be evaulate to achieve certain
+operation with quote.
+* Scheme can freely define keyword using define-macro.
+
+SQL
+------
+
+Language Description
+
+* SQL(Structured Query Language) is a language to deal with database.
+* SQL is a declariative language, different with interpreted language such as 
+python. This means we do not give detail of how to carry out instruction, just
+tell computer to do.
+
+Language Grammer
+
+* SELECT [table col name] (AS [alias column name])
+  FROM [table name] (AS [alias]) 
+  WHERE [condition for chosen item]
+  ORDER BY [condition for sequence]
+  GROUP BY [condition for groupo]
+  HAVING [aggragate function used for every group];
+  LIMIT [number wanted to present in output]
+
+* exercute order:
+  FROM build a table from chosen tables 
+  the table then filterd by WHERE
+  then GROUP BY
+  HAVING use aggragate function to filter
+  SELECT choose demand columns
+  ORDER BY order
+  LIMIT output limit number of lines
+
+* CREATE TABLE [table name] AS
+    [sql expressions (UNION)] 
+  will create a table.
+
+* In sql, to write condition one can use 
+  =,<,>,!=,AND,OR,+,-,*,/,||
+  It's worth noting that one can use combition like <> >=, etc.
+
+* Aggragate functions include
+  MIN, MAX. AVG, COUNT
+
+* In linux, one can use sqlite3 -init *.sql to open an interactive environment with *.sql carried out.
+
+
+
