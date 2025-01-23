@@ -1,6 +1,152 @@
 View what I learned from cs61a
 ===============================
 
+Environment
+------
+
+Frame
+
+* Program environment consist of a branch of frames. Frames contains 
+  key-value binding for interpreter to read. 
+* When the program strats, it automatically creates a global frame. Then any 
+  import, value define will create a binding between the variable name
+  and the true value.
+* A local frame is created when a user-defined function called. The actual
+  parameters will be bind to formal parameters in that local frame.
+* There is an inheriance relationship between frames based where the 
+  frame is created. 
+* Everytime a variable evaulated, the interpreter will take out its 
+  corresponding value frecursively from the first frame where it finds 
+  the variable. This is so-called name evaulation
+
+Function Abstraction
+
+* Functions are basic component of program and functions are equal to 
+abstraction. Abstraction means we don't care which value will be input and only
+care the logic itself.
+* Function design should follow abstraction principle:
+  * Function should only build for one task which can be named by one word and 
+    described by one line.
+  * DRY(Don't Repeat Yourself) principle. There should be no repeat code block
+    to achieve the same logic.
+  * Define function generally.
+* Higher-order functions are functions that accept functions as arguments or 
+  return functions as values.
+  * Higher-order functions are higher order abstraction.
+
+Test Function
+
+* function should have a docstring and >>> help(fun) will show the docstring.
+* We can use test to verify if the function behave as we expect. Some tools are 
+listed:
+  * assert statement
+  * Doctest: testmod(verify all function), run_docstring_examples(verify one 
+    function) from doctest module 
+
+Special Function and Technique
+* lambda: let coder define function without a name.
+* decortor: a special syntax to impose higher-order function on defined function
+  as part of a def statement. 
+* currying: define a higher-order function to simplify another function's 
+  arguments to one with others fixed. This transform is called currying.
+* recursive function: a function recursively call itself in its body.(recursive
+  is an important part of CS61a, but it's more related to technique but not 
+  concept so I wouldn't devote too much space to it.)
+
+
+Data 
+------
+
+Data Structure
+* Every type of data in python is a class. The same type has the same attributes
+  and methods.
+
+Data Abstraction
+* Division between data applying and data construction is data abstraction.
+* The concept of data abstraction ask us to build a data abstraction barriers.
+  Abstraction barriers means we should assign different permissions to different
+  operation. If operation logic just refer to certain layer, the construction 
+  below that layer should not be used for that operation.
+* In simple word, for manipulating data, we should construct a handle of 
+  constructor and selector. Selector fetch the value constructor needed while 
+  constructor achieve logic of value we needed. Both selector and constructor
+  should not related to the detail construction of data such as which build-in
+  type is used, etc.
+* The advantage of abstraction barriers is evenif the bottom implementation 
+  changed.
+
+Sequence
+* Sequence is a basket of data type with two criteria:
+  * sequence has limited length.
+  * every element are binding to a index.
+* sequence has some common method or manipulating logic. For the reason they 
+  often more related to detailed technique, I just generalize.
+  * iteration
+  * aggragate such as map, reduce, filter
+  * slice
+  * membership (in)
+  * list comprehension(only for some)
+
+Container
+* A data structure focus on storing data.
+ * container has limited length
+ * can't fetch an element by index
+
+Mutable Data
+* Data type in python can be divided into immutable and mutable. Local state is
+  an important component.
+* Function can also has local state by nonlocal statemen.
+* The import of mutable data type make the identity of variable important. Two
+  different name may point to the same value. Python supply 'is' to help coder
+  investigate it.
+* Every class is mutable data.
+
+Iterabel value and Iterator
+* Iterator is a data type in python. 
+ * It has two features, a mechanism to computer next element & a mechanism to 
+  sign a StopIteration error for reaching the end of the sequence.
+ * iter() method can generate for the input if the input is a iterable value. 
+  iter(iterator) will return itself.
+ * next() method will ask a iterator to pop next element or sign an StopIteration 
+  error.
+ * list() can convert an iterator to list.
+ * Every iterator have a __next__() method. Call it to get next element or 
+  warning. We can also define it by self to get an costomized iterator.
+ * Build-in iterator receive a iterable value and return a iterator, they are 
+  map, filter, reversed and zip.
+* Iterable value is data types which can return a iterator by calling iter() on 
+  it.
+  * iterable value has a __iter__() method to return a iterator.
+* Generator is a function that return a iterator. It is created by replacing 
+  return by yield.
+  * If one generator is created, every time call __next__() method will achieve
+  the command from status now to the next yield.
+  * can use yield to write a __next__ method to create a iterable variable.
+* Stream is a link list with lazy compute. The head of a stream is a value and 
+  the rest of it is a function to return a stream.
+  * stream only computer netx element when called.
+
+Class
+* Class have attributes and method. It can also inheriance from a parent class.(
+  we don't present too much detail for class grammar here)
+* Class give access to specific method such as __str__, __repr__, __bool__,
+  __call__.
+
+
+Efficiency
+------
+
+Measure
+* We can measure the time consumption of a program by the calling times of 
+  functions and the memory consumption of a program by the num of max frames
+  existing at the same time.
+* We can divide computer procedure into different order of growth. This use the 
+  concept of equivalent infinite in calculus.
+
+Efficiency Increase
+* Memoization is a method that can increase efficiency in recursive function.
+
+
 Scheme
 ------
 
@@ -111,7 +257,14 @@ Language Grammer
 * Aggragate functions include
   MIN, MAX. AVG, COUNT
 
-* In linux, one can use sqlite3 -init *.sql to open an interactive environment with *.sql carried out.
+* In linux, one can use sqlite3 -init *.sql to open an interactive 
+  environment with *.sql carried out.
+
+How to Program
+------
+
+* https://htdp.org/2018-01-06/Book/
+
 
 
 
