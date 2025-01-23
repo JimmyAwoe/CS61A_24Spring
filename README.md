@@ -36,5 +36,5 @@ making the course videos and all the materials publicly available. I've
 benefited a great deal from them.**
 
 There is another website I highly recommand everyone who want to study the
-computer science to open. That is https://csdiy.wiki/, which listed a great
-amount good online courses available.
+computer science to open. That is [csdiy](https://csdiy.wiki/), which listed a
+great amount good online courses available.
