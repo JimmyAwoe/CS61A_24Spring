@@ -5,16 +5,17 @@ of the famous SCIP. This course is also mainly focus on the abstract of
 programming on while at the same time, python, scheme and sql, three languages,
 will be teached among the course.
 
-I have finished all 12 labs, 10 homeworks and 4 projects independly which had
-been committed in my repository.
+I have finished all 12 labs, 10 homeworks and 4 projects and part of discussions
+independly which had been committed in my repository.
 
-Course vedios are also an important part of CS61a. I watched them in Bilibili
+Course vedios are also an important part of CS61a. I watched them in
+[Bilibili](https://www.bilibili.com/video/BV1sy411z7nA/?spm_id_from=333.337.search-card.all.click&vd_source=d7cdf569aa8285963d871ddb2da26675)
 where bilingual subtitles are given.
 
-For textbook, one can find them either in https://composingprograms.netlify.app
-for Chinese version or https://www.composingprograms.com for English version.
-The textbook contains a great amount of exampltes to explain the bottom of
-python language mechanism.
+For textbook, one can find them either in
+[Chinese version](https://composingprograms.netlify.app) or
+[English version](https://www.composingprograms.com) . The textbook contains a
+great amount of examples to explain the bottom of python language mechanism.
 
 I also summarize what I've gained from the course briefly in view.txt. If you
 hesitate to take this course and wondering what this course include, I recommand
